@@ -182,10 +182,11 @@ fun PantallaResultado(navController: NavController, nombre: String, imc: Double)
             fontWeight = FontWeight.SemiBold,
             color = colorIMC
         )
-
-
+        Spacer(modifier = Modifier.height(24.dp))
+        Button(onClick = { navController.popBackStack() }) {
+            Text("Volver")
+        }
     }
-
 }
 
 
