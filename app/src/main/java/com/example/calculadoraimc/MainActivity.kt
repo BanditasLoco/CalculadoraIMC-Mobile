@@ -149,6 +149,33 @@ fun PantallaInicio(navController: NavController){
 @Composable
 fun PantallaResultado(navController: NavController, nombre: String, imc: Double){
 
+    Column(
+        modifier = Modifier.fillMaxSize().padding(10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text("Hola $nombre tu IMC es ${"%.2f".format(imc)}",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.tertiary)
+
+        val clasificacionIMC = when (imc) {
+            in 0.0..18.49 -> "Bajo Peso"
+            in 18.50..24.99 -> "Peso Normal"
+            in 25.0..29.99 -> "Sobrepeso"
+            in 30.0..Double.MAX_VALUE -> "Obesidad"
+            else -> "Valor no válido"
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = clasificacionIMC,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.SemiBold,
+        )
+
+
+    }
 
 }
 
