@@ -167,11 +167,20 @@ fun PantallaResultado(navController: NavController, nombre: String, imc: Double)
             else -> "Valor no válido"
         }
 
+        val colorIMC = when (imc) {
+            in 0.0..18.49 -> Color.Cyan
+            in 18.50..24.99 -> Color.Green
+            in 25.0..29.99 -> Color.Yellow
+            in 30.0..Double.MAX_VALUE -> Color.Red
+            else -> Color.Gray
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = clasificacionIMC,
             fontSize = 20.sp,
             fontWeight = FontWeight.SemiBold,
+            color = colorIMC
         )
 
 
