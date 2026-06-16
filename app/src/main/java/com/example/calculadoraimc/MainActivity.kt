@@ -67,7 +67,7 @@ fun AppNavegacion() {
         }
         composable ("resultado/{nombre}/{imc}") {backStackEntry ->
             val nombreResultado = backStackEntry.arguments?.getString("nombre")?:"El Pepe"
-            val imcResultado = backStackEntry.arguments?.getDouble("imc")?:0.0
+            val imcResultado = backStackEntry.arguments?.getString("imc")?.toDoubleOrNull()?: 0.0
             PantallaResultado(navController, nombreResultado, imcResultado)
         }
     }
@@ -100,7 +100,7 @@ fun PantallaInicio(navController: NavController){
         Spacer(modifier = Modifier.height(24.dp))
         OutlinedTextField(
             value = peso,
-            onValueChange = { 
+            onValueChange = {
                 peso = it
                 errorPeso = false
             },
@@ -111,7 +111,7 @@ fun PantallaInicio(navController: NavController){
         Spacer(modifier = Modifier.height(24.dp))
         OutlinedTextField(
             value = altura,
-            onValueChange = { 
+            onValueChange = {
                 altura = it
                 errorAltura = false
             },
